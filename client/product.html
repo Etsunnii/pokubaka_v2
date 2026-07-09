@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Каталог товаров - PokuBaka</title>
+		<meta
+			name="description"
+			content="Каталог цифровых товаров PokuBaka: ключи, подписки и пополнение сервисов."
+		/>
+		<link rel="canonical" href="https://pokubaka.ru/catalog" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="PokuBaka" />
+		<meta property="og:title" content="Каталог товаров - PokuBaka" />
+		<meta property="og:description" content="Выберите категорию цифровых товаров в PokuBaka: ключи, подписки и пополнение сервисов." />
+		<meta property="og:url" content="https://pokubaka.ru/catalog" />
+		<meta property="og:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Каталог товаров - PokuBaka" />
+		<meta name="twitter:description" content="Выберите категорию цифровых товаров в PokuBaka: ключи, подписки и пополнение сервисов." />
+		<meta name="twitter:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/16x16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/32x32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/64x64.png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/120x120.png"
+			sizes="120x120"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/128x128.png"
+			sizes="128x128"
+		/>
+		<link rel="stylesheet" href="/css/nullstyles.css" />
+		<link rel="stylesheet" href="/css/var.css?v=20260709-unified-loader" />
+		<link rel="stylesheet" href="/css/product.css?v=20260619-pure-black" />
+		<link rel="stylesheet" href="/css/product-adaptive.css?v=20260614-product-card-cover" />
+	</head>
+	<body>
+		<div id="loadingOverlay" class="loading-overlay">
+			<div class="loading-overlay__content" role="status" aria-live="polite">
+				<span class="loading-overlay__spinner" aria-hidden="true"></span>
+				<span>Загрузка...</span>
+			</div>
+		</div>
+		<div id="contentContainer">
+			<header class="header">
+				<div class="container">
+					<div class="header__content">
+						<a href="/" class="header-logo" aria-label="PokuBaka">
+							<span class="header-logo__icon">
+								<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+							</span>
+							<span class="header-logo__text">
+								<span>Poku</span><span>Baka</span>
+							</span>
+						</a>
+						<nav class="header-nav" aria-label="Основная навигация">
+							<a href="/" class="header-link" data-nav="home">Главная</a>
+							<a href="/catalog" class="header-link" data-nav="catalog">Каталог</a>
+							<a href="/faq" class="header-link header-link-faq" data-nav="faq">FAQ</a>
+							<a href="https://t.me/Reviewspokubaka" class="header-link" data-nav="reviews">Отзывы</a>
+							<a href="/news" class="header-link header-link-news" data-nav="news">Новости</a>
+						</nav>
+						<div class="header-actions">
+							<a href="https://oplata.info/info/" class="header-link header-link-purchases" target="_blank" rel="noopener">
+								<img class="header-link-purchases__icon" src="/assets/icons/shopping-bag.png" alt="" />
+								<span>Мои покупки</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="wrapper">
+				<h1 class="product__title" id="productTitle"></h1>
+
+				<section class="variants">
+					<div class="container">
+						<div class="variants__content" id="itemsContainer"></div>
+					</div>
+				</section>
+
+				<div class="dividing-line"></div>
+
+				<section class="description">
+					<div class="container">
+						<div class="description__content" id="descriptionContainer">
+							<h4 class="description__title" id="descriptionTitle"></h4>
+						</div>
+					</div>
+				</section>
+			</div>
+			<footer class="footer shop-footer">
+				<div class="shop-footer__inner">
+					<div class="shop-footer__brand">
+						<a class="shop-footer__logo" href="/" aria-label="PokuBaka">
+							<span class="shop-footer__logo-icon">
+								<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+							</span>
+							<span class="shop-footer__logo-text"><span>Poku</span><span>Baka</span></span>
+						</a>
+						<p class="shop-footer__description">
+							Магазин цифровых товаров. Игры, подписки и ключи с мгновенной доставкой.
+						</p>
+					</div>
+					<div class="shop-footer__column">
+						<h3 class="shop-footer__title">Категории</h3>
+						<nav class="shop-footer__links" id="footerCategories" aria-label="Категории"></nav>
+					</div>
+					<div class="shop-footer__column">
+						<h3 class="shop-footer__title">Информация</h3>
+						<nav class="shop-footer__links" aria-label="Информация">
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--offer" href="/docs/oferta.pdf">Публичная оферта</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--privacy" href="/docs/politika.pdf">Политика конфиденциальности</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--faq" href="/faq">FAQ</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--reviews" href="https://t.me/Reviewspokubaka">Отзывы</a>
+						</nav>
+					</div>
+					<div class="shop-footer__column shop-footer__contacts">
+						<h3 class="shop-footer__title">Контакты</h3>
+						<nav class="shop-footer__contact-list" aria-label="Контакты">
+							<a class="shop-footer__contact shop-footer__contact--telegram" href="https://t.me/pokubakasupport" target="_blank" rel="noopener">
+								<img src="/assets/icons/telegram.svg" alt="" />
+								<span><strong>Telegram</strong><small>Ответим быстро</small></span>
+							</a>
+							<a class="shop-footer__contact shop-footer__contact--channel" href="https://t.me/pokubaka" target="_blank" rel="noopener">
+								<img src="/assets/icons/telegram.svg" alt="" />
+								<span><strong>Telegram канал</strong><small>Новости</small></span>
+							</a>
+							<a class="shop-footer__contact shop-footer__contact--email" href="mailto:support@pokubaka.ru">
+								<img src="/assets/icons/email.svg" alt="" />
+								<span><strong>Email</strong><small>support@pokubaka.ru</small></span>
+							</a>
+						</nav>
+					</div>
+				</div>
+				<div class="shop-footer__bottom">
+					<p>Все права защищены. PokuBaka не является официальным представителем указанных брендов.</p>
+				</div>
+				<div class="container shop-footer__legacy" aria-hidden="true">
+					<div class="footer__content">
+						<div class="footer-top">
+							<a href="/">
+								<img
+									src="/assets/images/logotxt.webp"
+									alt="logo"
+									class="footer-logo"
+								/>
+							</a>
+							<div class="footer__block">
+								<a href="/docs/politika.pdf" class="footer__text">
+									Политика конфиденциальности</a
+								>
+								<a href="/docs/oferta.pdf" class="footer__text"
+									>Публичная оферта</a
+								>
+							</div>
+							<div class="footer__block">
+								<a href="https://t.me/pokubakasupport" class="footer__row footer__link"
+									><img src="/assets/icons/telegram.svg" alt="" /> Telegram</a
+								>
+								<a
+									href="mailto:support@pokubaka.ru"
+									class="footer__row footer__link"
+									><img src="/assets/icons/email.svg" alt="" />
+									support@pokubaka.ru</a
+								>
+							</div>
+						</div>
+						<div class="footer-bottom">
+							Все права защищены. Копирование любых материалов сайта запрещено!
+							Все названия продуктов и игр, компаний и марок, логотипы,
+							товарные знаки и другие материалы являются собственностью
+							соответствующих владельцев.
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<a
+			class="digiseller-chat-button"
+			href="/digiseller-chat"
+			target="_blank"
+			rel="noopener"
+			aria-label="Открыть чат поддержки Digiseller"
+		>
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path
+					d="M20 11.55c0 4.06-3.6 7.35-8.03 7.35-1.28 0-2.5-.28-3.57-.78L4 19.35l1.28-3.5A6.86 6.86 0 0 1 3.94 11.55C3.94 7.49 7.54 4.2 11.97 4.2S20 7.49 20 11.55Z"
+				/>
+			</svg>
+		</a>
+
+	<script type="module" src="/js/components/headerNav.js?v=20260709-faq-loader-blocked"></script>
+		<script type="module" src="/js/components/digisellerChat.js?v=20260706-digiseller-chat-restored"></script>
+		<script type="module" src="/js/pages/product/product.js?v=20260616-seo"></script>
+		<script type="module" src="/js/components/footer.js?v=20260706-footer-category-names"></script>
+	</body>
+</html>
+
+

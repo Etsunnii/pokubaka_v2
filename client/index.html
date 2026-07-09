@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PokuBaka - магазин цифровых товаров</title>
+		<meta
+			name="description"
+			content="Покупайте цифровые товары, ключи, подписки и пополнение сервисов в PokuBaka."
+		/>
+		<link rel="canonical" href="https://pokubaka.ru/" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="PokuBaka" />
+		<meta property="og:title" content="PokuBaka - магазин цифровых товаров" />
+		<meta property="og:description" content="Цифровые товары, ключи, подписки и пополнение сервисов в PokuBaka." />
+		<meta property="og:url" content="https://pokubaka.ru/" />
+		<meta property="og:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="PokuBaka - магазин цифровых товаров" />
+		<meta name="twitter:description" content="Цифровые товары, ключи, подписки и пополнение сервисов в PokuBaka." />
+		<meta name="twitter:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<!-- <link
+			rel="icon"
+			href="/assets/icons/favicon.ico"
+			type="image/x-icon"
+			sizes="16x16"
+		/> -->
+		<!-- <link
+			rel="icon"
+			href="/assets/icons/logo-fav2.png"
+			type="image/png"
+			sizes="26x26"
+		/> -->
+		<!-- <link
+			rel="icon"
+			href="/assets/icons/logo-fav.webp"
+			type="image/webp"
+			sizes="172x127"
+		/> -->
+		<!-- <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" /> -->
+		<!-- <link rel="icon" type="image/png" href="./yandexmusic.png" /> -->
+		<!-- <link rel="icon" type="image/x-icon" href="./180x180.ico" />
+		  -->
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/16x16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/32x32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/64x64.png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/120x120.png"
+			sizes="120x120"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/128x128.png"
+			sizes="128x128"
+		/>
+
+		<link rel="stylesheet" href="/css/nullstyles.css" />
+		<link rel="stylesheet" href="/css/var.css?v=20260708-unified-loader" />
+		<link rel="stylesheet" href="/css/index.css?v=20260706-subscription-white-circles" />
+		<link rel="stylesheet" href="/css/index-adaptive.css?v=20260706-subscription-white-circles" />
+	</head>
+	<body>
+		<div id="loadingOverlay" class="loading-overlay">
+			<div class="loading-overlay__content" role="status" aria-live="polite">
+				<span class="loading-overlay__spinner" aria-hidden="true"></span>
+				<span>Загрузка...</span>
+			</div>
+		</div>
+		<div id="contentContainer">
+			<header class="header">
+				<div class="container">
+					<div class="header__content">
+						<a href="/" class="header-logo" aria-label="PokuBaka">
+							<span class="header-logo__icon">
+								<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+							</span>
+							<span class="header-logo__text">
+								<span>Poku</span><span>Baka</span>
+							</span>
+						</a>
+						<nav class="header-nav" aria-label="Основная навигация">
+							<a href="/" class="header-link" data-nav="home">Главная</a>
+							<a href="/catalog" class="header-link" data-nav="catalog">Каталог</a>
+							<a href="/faq" class="header-link header-link-faq" data-nav="faq">FAQ</a>
+							<a href="https://t.me/Reviewspokubaka" class="header-link" data-nav="reviews">Отзывы</a>
+							<a href="/news" class="header-link header-link-news" data-nav="news">Новости</a>
+						</nav>
+						<div class="header-actions">
+							<a href="https://oplata.info/info/" class="header-link header-link-purchases" target="_blank" rel="noopener">
+								<img class="header-link-purchases__icon" src="/assets/icons/shopping-bag.png" alt="" />
+								<span>Мои покупки</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="banner">
+				<div class="container">
+					<div class="banner__content">
+						<div class="banner__hero banner__hero--static">
+							<div class="banner__badge">
+								<span class="banner__badge-icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" focusable="false">
+										<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+									</svg>
+								</span>
+								<span>БЫСТРАЯ ВЫДАЧА</span>
+							</div>
+							<div class="banner__title banner__title--figma">Всё для игр и сервисов</div>
+							<p class="banner__subtitle">
+								Оформим ChatGPT Plus, Claude Pro, Spotify Premium, Ps plus и другие сервисы на ваш аккаунт. Принимаем оплату картами РФ и через СБП. Быстрое подключение, поддержка и гарантия на весь период подписки.
+							</p>
+							<div class="banner__actions">
+								<a class="banner__button" href="/catalog">
+									<span>Перейти в каталог</span>
+									<span class="banner__button-icon" aria-hidden="true"></span>
+								</a>
+								<button class="banner__button banner__button--secondary js-go-to-popular" type="button">
+									<span>Популярное</span>
+								</button>
+							</div>
+							<ul class="banner__features" aria-label="Преимущества магазина">
+								<li>
+									<span class="banner__feature-icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" focusable="false">
+											<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+										</svg>
+									</span>
+									Активация от 15 минут
+								</li>
+								<li>
+									<span class="banner__feature-icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" focusable="false">
+											<path d="M12 3 5 6v5c0 4.6 2.9 8.7 7 10 4.1-1.3 7-5.4 7-10V6l-7-3Z" />
+											<path d="m9 12 2 2 4-4" />
+										</svg>
+									</span>
+									Гарантия
+								</li>
+								<li>
+									<span class="banner__feature-icon" aria-hidden="true">
+										<svg viewBox="0 0 24 24" focusable="false">
+											<rect x="3" y="5" width="18" height="14" rx="3" />
+											<path d="M3 10h18" />
+											<path d="M7 15h4" />
+										</svg>
+									</span>
+									СБП / Карта
+								</li>
+							</ul>
+						</div>
+						<div class="banner__hero">
+							<div class="banner__badge">
+								<span class="banner__badge-icon" aria-hidden="true"></span>
+								<span>БЫСТРАЯ ВЫДАЧА</span>
+							</div>
+							<h1 class="banner__title banner__title--figma">Всё для игр и сервисов</h1>
+							<p class="banner__subtitle">
+								Оформим ChatGPT Plus, Claude Pro, Spotify Premium, Ps plus и другие сервисы на ваш аккаунт. Принимаем оплату картами РФ и через СБП. Быстрое подключение, поддержка и гарантия на весь период подписки.
+							</p>
+							<div class="banner__actions">
+								<a class="banner__button" href="/catalog">
+									<span>Перейти в каталог</span>
+									<span class="banner__button-icon" aria-hidden="true"></span>
+								</a>
+								<button class="banner__button banner__button--secondary js-go-to-popular" type="button">
+									<span>Популярное</span>
+								</button>
+							</div>
+							<ul class="banner__features" aria-label="Преимущества магазина">
+								<li><span aria-hidden="true"></span>Активация от 15 минут</li>
+								<li><span aria-hidden="true"></span>Гарантия</li>
+								<li><span aria-hidden="true"></span>СБП / Карта</li>
+							</ul>
+						</div>
+						<p class="banner__title">Онлайн магазин Цифровых товаров</p>
+						<main class="banner__text">
+							Вернитесь к любимым сервисам и легко пополняйте игры
+						</main>
+					</div>
+				</div>
+				<input
+					type="text"
+					value=""
+					class="hidden_img_input"
+					style="display: none"
+				/>
+			</section>
+
+			<section class="best-sellers" id="bestSellers" hidden>
+				<div class="container">
+					<div class="best-sellers__head">
+						<div class="best-sellers__title-wrap">
+							<span class="best-sellers__icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" focusable="false">
+									<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+								</svg>
+							</span>
+							<h2 class="best-sellers__title">Хиты продаж</h2>
+						</div>
+						<div class="best-sellers__line" aria-hidden="true"></div>
+					</div>
+					<div class="best-sellers__list" id="bestSellersGrid"></div>
+				</div>
+			</section>
+
+			<section class="advantages">
+				<div class="advantages__title-block title-block">
+					<div class="container">
+						<h2 class="advantages__title">Почему пользователи выбирают PokuBaka</h2>
+						<p class="advantages__subtitle">
+							Подключаем популярные зарубежные сервисы для пользователей из России.
+							Быстро, безопасно и с гарантией результата.
+						</p>
+					</div>
+				</div>
+				<div class="container">
+					<div class="advantages__content">
+						<div class="advantages__block">
+							<div class="advantages__item advantages-item">
+								<span class="advantages-item__icon" aria-hidden="true">
+									<img src="/assets/icons/speed.svg" alt="" />
+								</span>
+								<h3 class="advantages-item__title">Быстрая активация</h3>
+								<p class="advantages-item__text">
+									Подключаем большинство подписок за 10–15 минут после оплаты.
+								</p>
+							</div>
+							<div class="advantages__item advantages-item">
+								<span class="advantages-item__icon" aria-hidden="true">
+									<img src="/assets/icons/reliability.svg" alt="" />
+								</span>
+								<h3 class="advantages-item__title">Гарантия на все подписки</h3>
+								<p class="advantages-item__text">
+									Если возникнут проблемы с подпиской — поможем решить вопрос и останемся на связи.
+								</p>
+							</div>
+						</div>
+						<div class="advantages__block">
+							<div class="advantages__item advantages-item">
+								<span class="advantages-item__icon" aria-hidden="true">
+									<img src="/assets/icons/payment.svg" alt="" />
+								</span>
+								<h3 class="advantages-item__title">Удобная оплата из России</h3>
+								<p class="advantages-item__text">
+									Банковские карты РФ, СБП и другие удобные способы оплаты.
+								</p>
+							</div>
+							<div class="advantages__item advantages-item">
+								<span class="advantages-item__icon" aria-hidden="true">
+									<img src="/assets/icons/support.svg" alt="" />
+								</span>
+								<h3 class="advantages-item__title">Поддержка</h3>
+								<p class="advantages-item__text">
+									Отвечаем на вопросы и помогаем с подключением c 9:00-21:00 по МСК.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="subscription-steps" aria-labelledby="subscriptionStepsTitle">
+				<div class="container">
+					<div class="subscription-steps__head">
+						<h2 class="subscription-steps__title" id="subscriptionStepsTitle">Как оформить покупку</h2>
+						<p class="subscription-steps__subtitle">
+							Покупка занимает всего несколько минут. Выберите товар, оплатите удобным способом
+							и получите доступ или ключ без лишнего ожидания.
+						</p>
+					</div>
+					<div class="subscription-steps__grid">
+						<div class="subscription-step">
+							<span class="subscription-step__number">1</span>
+							<h3 class="subscription-step__title">Выберите подписку или ключ</h3>
+							<p class="subscription-step__text">
+								Найдите нужный сервис, тариф и срок действия подписки в каталоге.
+							</p>
+						</div>
+						<div class="subscription-step">
+							<span class="subscription-step__number">2</span>
+							<h3 class="subscription-step__title">Оформите и оплатите заказ</h3>
+							<p class="subscription-step__text">
+								Укажите электронную почту, подтвердите заказ и оплатите удобным способом.
+							</p>
+						</div>
+						<div class="subscription-step">
+							<span class="subscription-step__number">3</span>
+							<h3 class="subscription-step__title">Получите товар</h3>
+							<p class="subscription-step__text">
+								После оплаты, сразу будет выдан ключ, если покупаете подписку, то откроется чат заказа, туда отправьте данные аккаунта или почту для регистрации.
+							</p>
+						</div>
+						<div class="subscription-step">
+							<span class="subscription-step__number">4</span>
+							<h3 class="subscription-step__title">Получите доступ или ключ</h3>
+							<p class="subscription-step__text">
+								Мы подключим подписку и сообщим о готовности заказа. Обычно это занимает от 15 до 30 минут, если вы купили ключ, то он будет выдан моментально.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<footer class="footer shop-footer">
+				<div class="shop-footer__inner">
+					<div class="shop-footer__brand">
+						<a class="shop-footer__logo" href="/" aria-label="PokuBaka">
+							<span class="shop-footer__logo-icon">
+								<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+							</span>
+							<span class="shop-footer__logo-text"><span>Poku</span><span>Baka</span></span>
+						</a>
+						<p class="shop-footer__description">
+							Магазин цифровых товаров. Игры, подписки и ключи с мгновенной доставкой.
+						</p>
+					</div>
+					<div class="shop-footer__column">
+						<h3 class="shop-footer__title">Категории</h3>
+						<nav class="shop-footer__links" id="footerCategories" aria-label="Категории"></nav>
+					</div>
+					<div class="shop-footer__column">
+						<h3 class="shop-footer__title">Информация</h3>
+						<nav class="shop-footer__links" aria-label="Информация">
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--offer" href="/docs/oferta.pdf">Публичная оферта</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--privacy" href="/docs/politika.pdf">Политика конфиденциальности</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--faq" href="/faq">FAQ</a>
+							<a class="shop-footer__link shop-footer__link--icon shop-footer__link--reviews" href="https://t.me/Reviewspokubaka">Отзывы</a>
+						</nav>
+					</div>
+					<div class="shop-footer__column shop-footer__contacts">
+						<h3 class="shop-footer__title">Контакты</h3>
+						<nav class="shop-footer__contact-list" aria-label="Контакты">
+							<a class="shop-footer__contact shop-footer__contact--telegram" href="https://t.me/pokubakasupport" target="_blank" rel="noopener">
+								<img src="/assets/icons/telegram.svg" alt="" />
+								<span><strong>Telegram</strong><small>Ответим быстро</small></span>
+							</a>
+							<a class="shop-footer__contact shop-footer__contact--channel" href="https://t.me/pokubaka" target="_blank" rel="noopener">
+								<img src="/assets/icons/telegram.svg" alt="" />
+								<span><strong>Telegram канал</strong><small>Новости</small></span>
+							</a>
+							<a class="shop-footer__contact shop-footer__contact--email" href="mailto:support@pokubaka.ru">
+								<img src="/assets/icons/email.svg" alt="" />
+								<span><strong>Email</strong><small>support@pokubaka.ru</small></span>
+							</a>
+						</nav>
+					</div>
+				</div>
+				<div class="shop-footer__bottom">
+					<p>Все права защищены. PokuBaka не является официальным представителем указанных брендов.</p>
+				</div>
+				<div class="container shop-footer__legacy" aria-hidden="true">
+					<div class="footer__content">
+						<div class="footer-top">
+							<a href="/">
+								<img
+									src="/assets/images/logotxt.webp"
+									alt="logo"
+									class="footer-logo"
+								/>
+							</a>
+							<div class="footer__block">
+								<a href="/docs/politika.pdf" class="footer__text">
+									Политика конфиденциальности</a
+								>
+								<a href="/docs/oferta.pdf" class="footer__text"
+									>Публичная оферта</a
+								>
+							</div>
+							<div class="footer__block">
+								<a href="https://t.me/pokubakasupport" class="footer__row footer__link"
+									><img src="/assets/icons/telegram.svg" alt="" /> Telegram</a
+								>
+								<a
+									href="mailto:support@pokubaka.ru"
+									class="footer__row footer__link"
+									><img src="/assets/icons/email.svg" alt="" />
+									support@pokubaka.ru</a
+								>
+							</div>
+						</div>
+						<div class="footer-bottom">
+							Все права защищены. Копирование любых материалов сайта запрещено!
+							Все названия продуктов и игр, компаний и марок, логотипы,
+							товарные знаки и другие материалы являются собственностью
+							соответствующих владельцев.
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<a
+			class="digiseller-chat-button"
+			href="/digiseller-chat"
+			target="_blank"
+			rel="noopener"
+			aria-label="Открыть чат поддержки Digiseller"
+		>
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path
+					d="M20 11.55c0 4.06-3.6 7.35-8.03 7.35-1.28 0-2.5-.28-3.57-.78L4 19.35l1.28-3.5A6.86 6.86 0 0 1 3.94 11.55C3.94 7.49 7.54 4.2 11.97 4.2S20 7.49 20 11.55Z"
+				/>
+			</svg>
+		</a>
+
+	<script type="module" src="/js/components/headerNav.js?v=20260709-faq-loader-blocked"></script>
+		<script type="module" src="/js/components/digisellerChat.js?v=20260706-digiseller-chat-restored"></script>
+		<script type="module" src="/js/pages/index/index.js?v=20260706-categories-page-link"></script>
+		<script type="module" src="/js/components/footer.js?v=20260706-footer-category-names"></script>
+	</body>
+</html>
+
+

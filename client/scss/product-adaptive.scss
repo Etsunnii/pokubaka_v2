@@ -1,0 +1,22 @@
+﻿@media (max-width: 960px) {
+	.variants__content {
+		grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 элемента в ряду для мобильных */
+		gap: 1.4rem;
+	}
+	.category-product {
+		max-width: none;
+	}
+}
+
+@media (max-width: 760px) {
+	.category-product__name {
+		font-size: 2rem;
+		line-height: 1.18;
+	}
+	.category-product__price {
+		font-size: 1.8rem;
+	}
+	.category-product__old-price {
+		font-size: 1.4rem;
+	}
+}

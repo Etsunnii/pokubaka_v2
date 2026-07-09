@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modals</title>
+		<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/css/nullstyles.css" />
+		<link rel="stylesheet" href="/css/var.css?v=20260707-chat-hover-restore" />
+		<link rel="stylesheet" href="/css/item.css?v=20260619-pure-black" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container modal-container">
+				<button
+					type="button"
+					class="btn btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#bidModal"
+				>
+					Bid Modal
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#successPaymentModal"
+				>
+					Success Payment Modal
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#errorPaymentModal"
+				>
+					Error Payment Modal
+				</button>
+
+				<!-- Modal Bid -->
+				<div
+					class="modal fade"
+					id="bidModal"
+					tabindex="-1"
+					aria-labelledby="bidModalLabel"
+					aria-hidden="true"
+				>
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal__title">Введите почту для получения товара</div>
+							<div class="modal__desc">
+								Товар будет выслан в течении 3 минут
+							</div>
+							<form action="#" class="modal__body">
+								<input
+									class="modal__input"
+									type="email"
+									placeholder="Почта для получения"
+								/>
+								<div class="modal__btns">
+									<button
+										class="btn_close"
+										data-bs-dismiss="modal"
+										aria-label="Close"
+									>
+										Отмена</button
+									><button class="btn_pay">Оплатить</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal Success Payment -->
+				<div
+					class="modal fade"
+					id="successPaymentModal"
+					tabindex="-1"
+					aria-labelledby="successPaymentModalLabel"
+					aria-hidden="true"
+				>
+					<div class="modal-dialog payment">
+						<div class="modal-content payment">
+							<div class="modal__title">Спасибо за покупку!</div>
+							<div class="modal__desc">
+								Порадуйте котика! Оставьте отзыв в нашем телеграм чате
+							</div>
+							<div action="#" class="modal__body">
+								<a href="https://t.me/Reviewspokubaka" class="modal__tg-link">
+									<div class="link-container">
+										<div class="icon">
+											<svg
+												viewBox="0 0 66 66"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M66 33C66 41.7521 62.5232 50.1458 56.3345 56.3345C50.1458 62.5232 41.7521 66 33 66C24.2479 66 15.8542 62.5232 9.66548 56.3345C3.47678 50.1458 0 41.7521 0 33C0 24.2479 3.47678 15.8542 9.66548 9.66548C15.8542 3.47678 24.2479 0 33 0C41.7521 0 50.1458 3.47678 56.3345 9.66548C62.5232 15.8542 66 24.2479 66 33ZM34.1839 24.3623C30.9719 25.6988 24.5561 28.4625 14.9366 32.6535C13.3774 33.2723 12.5592 33.88 12.4823 34.4767C12.3585 35.4791 13.6166 35.8751 15.3285 36.4155L16.0504 36.6424C17.7334 37.191 20.0021 37.8304 21.1777 37.8551C22.2502 37.8826 23.4437 37.4426 24.7582 36.5351C33.748 30.4686 38.3873 27.4024 38.676 27.3364C38.8823 27.2869 39.171 27.2291 39.3607 27.4024C39.5505 27.5756 39.534 27.8974 39.5134 27.984C39.3896 28.5161 34.452 33.1031 31.8986 35.4791C31.1025 36.2216 30.5374 36.7455 30.4219 36.8651C30.1676 37.1251 29.9091 37.3809 29.6464 37.6324C28.0789 39.1421 26.9074 40.2724 29.7083 42.1204C31.0571 43.0114 32.1379 43.7415 33.2145 44.4757C34.386 45.276 35.5575 46.0721 37.0755 47.0704C37.4605 47.3234 37.8318 47.5805 38.1893 47.8417C39.5546 48.8152 40.788 49.6898 42.3019 49.5495C43.1846 49.467 44.0962 48.642 44.5583 46.167C45.6514 40.3219 47.8005 27.6623 48.2955 22.4441C48.3266 22.0104 48.3086 21.5745 48.2419 21.1448C48.2019 20.7983 48.0342 20.4792 47.7716 20.2496C47.3958 19.9915 46.9487 19.8574 46.4929 19.866C45.2554 19.8866 43.3455 20.5508 34.1839 24.3623Z"
+													fill="white"
+												/>
+											</svg>
+										</div>
+										<p>Telegram чат</p>
+									</div>
+								</a>
+								<img
+									src="/assets/images/success-payment.png"
+									alt="success Payment"
+									class="modal__img"
+								/>
+								<div class="modal__single-btn">
+									<button
+										class="btn_close"
+										data-bs-dismiss="modal"
+										aria-label="Close"
+									>
+										Закрыть
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal Error Payment -->
+				<div
+					class="modal fade"
+					id="errorPaymentModal"
+					tabindex="-1"
+					aria-labelledby="errorPaymentModalLabel"
+					aria-hidden="true"
+				>
+					<div class="modal-dialog payment">
+						<div class="modal-content payment">
+							<div class="modal__title">Произошла ошибка</div>
+							<div class="modal__desc">Попробуйте позже</div>
+							<div action="#" class="modal__body">
+								<a href="https://t.me/pokubakasupport" class="modal__tg-link">
+									<div class="link-container">
+										<div class="icon">
+											<svg
+												viewBox="0 0 66 66"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<path
+													d="M66 33C66 41.7521 62.5232 50.1458 56.3345 56.3345C50.1458 62.5232 41.7521 66 33 66C24.2479 66 15.8542 62.5232 9.66548 56.3345C3.47678 50.1458 0 41.7521 0 33C0 24.2479 3.47678 15.8542 9.66548 9.66548C15.8542 3.47678 24.2479 0 33 0C41.7521 0 50.1458 3.47678 56.3345 9.66548C62.5232 15.8542 66 24.2479 66 33ZM34.1839 24.3623C30.9719 25.6988 24.5561 28.4625 14.9366 32.6535C13.3774 33.2723 12.5592 33.88 12.4823 34.4767C12.3585 35.4791 13.6166 35.8751 15.3285 36.4155L16.0504 36.6424C17.7334 37.191 20.0021 37.8304 21.1777 37.8551C22.2502 37.8826 23.4437 37.4426 24.7582 36.5351C33.748 30.4686 38.3873 27.4024 38.676 27.3364C38.8823 27.2869 39.171 27.2291 39.3607 27.4024C39.5505 27.5756 39.534 27.8974 39.5134 27.984C39.3896 28.5161 34.452 33.1031 31.8986 35.4791C31.1025 36.2216 30.5374 36.7455 30.4219 36.8651C30.1676 37.1251 29.9091 37.3809 29.6464 37.6324C28.0789 39.1421 26.9074 40.2724 29.7083 42.1204C31.0571 43.0114 32.1379 43.7415 33.2145 44.4757C34.386 45.276 35.5575 46.0721 37.0755 47.0704C37.4605 47.3234 37.8318 47.5805 38.1893 47.8417C39.5546 48.8152 40.788 49.6898 42.3019 49.5495C43.1846 49.467 44.0962 48.642 44.5583 46.167C45.6514 40.3219 47.8005 27.6623 48.2955 22.4441C48.3266 22.0104 48.3086 21.5745 48.2419 21.1448C48.2019 20.7983 48.0342 20.4792 47.7716 20.2496C47.3958 19.9915 46.9487 19.8574 46.4929 19.866C45.2554 19.8866 43.3455 20.5508 34.1839 24.3623Z"
+													fill="white"
+												/>
+											</svg>
+										</div>
+										<p>Поддержка</p>
+									</div>
+								</a>
+								<img
+									src="/assets/images/error-payment.png"
+									alt="success Payment"
+									class="modal__img"
+								/>
+								<div class="modal__single-btn">
+									<button
+										class="btn_close"
+										data-bs-dismiss="modal"
+										aria-label="Close"
+									>
+										Закрыть
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,240 @@
+﻿@media (max-width: 760px) {
+  .category__content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+  .category-product {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .category-product__name {
+    font-size: 2rem;
+    line-height: 1.18;
+  }
+  .category-product__price {
+    font-size: 1.8rem;
+  }
+  .category-product__old-price {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 660px) {
+  .advantages {
+    padding: 5.2rem 0 6rem;
+  }
+  .advantages__content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 0 0;
+  }
+  .advantages__title-block {
+    min-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .advantages__title-block > .container {
+    gap: 1.4rem;
+  }
+  .advantages__title {
+    width: auto;
+    padding: 0;
+    font-size: 3rem;
+    line-height: 1.1;
+    letter-spacing: 0;
+    white-space: normal;
+  }
+  .advantages__subtitle {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  .advantages-item {
+    min-height: auto;
+    padding: 3rem 2.6rem;
+    border-radius: 2rem;
+  }
+  .advantages-item__icon {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin-bottom: 2.8rem;
+  }
+  .advantages-item__icon img {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
+    border-radius: 0;
+  }
+  .advantages-item__title {
+    margin-bottom: 1.2rem;
+    font-size: 2.1rem;
+  }
+  .advantages-item__text {
+    font-size: 1.62rem;
+    white-space: normal;
+  }
+  .subscription-steps {
+    padding: 5.2rem 0 6rem;
+  }
+  .subscription-steps__head {
+    gap: 1.4rem;
+  }
+  .subscription-steps__title {
+    font-size: 3.2rem;
+    line-height: 1.12;
+  }
+  .subscription-steps__subtitle {
+    font-size: 1.55rem;
+    line-height: 1.5;
+  }
+  .subscription-steps__grid {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    margin-top: 4.6rem;
+  }
+  .subscription-steps__grid::before {
+    display: none;
+  }
+  .subscription-step {
+    min-height: 0;
+    padding-left: 0;
+  }
+  .subscription-step__number {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 2.2rem;
+    font-size: 2rem;
+  }
+  .subscription-step__title {
+    margin-bottom: 1rem;
+    font-size: 2.15rem;
+  }
+  .subscription-step__text {
+    font-size: 1.58rem;
+  }
+}
+
+@media (min-width: 661px) and (max-width: 1024px) {
+  .advantages__content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.6rem;
+  }
+  .advantages-item {
+    min-height: 28rem;
+  }
+  .advantages-item__title {
+    font-size: 2.35rem;
+  }
+  .advantages-item__text {
+    font-size: 1.72rem;
+  }
+  .subscription-steps__title {
+    font-size: 4.2rem;
+  }
+  .subscription-steps__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem 3.2rem;
+  }
+  .subscription-steps__grid::before {
+    display: none;
+  }
+  .subscription-step__title {
+    font-size: 2.25rem;
+  }
+  .subscription-step__text {
+    font-size: 1.68rem;
+  }
+}
+@media (max-width: 365px) {
+  #public-offer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .banner {
+    padding-top: 21rem;
+    padding-bottom: 2.8rem;
+  }
+  .banner__content {
+    min-height: auto;
+    padding: 2.2rem 1.2rem 3rem;
+  }
+  .banner__hero {
+    gap: 1.6rem;
+  }
+  .banner__title--figma {
+    font-size: clamp(2.6rem, 9vw, 3.8rem);
+  }
+  .banner__subtitle {
+    font-size: 1.5rem;
+    line-height: 1.45;
+  }
+  .banner__actions {
+    margin: 1.8rem 0 2.2rem;
+  }
+  .banner__button {
+    width: 100%;
+    max-width: 30rem;
+    min-height: 5.8rem;
+    padding: 1.35rem 2.4rem;
+    font-size: 1.7rem;
+  }
+  .banner__features {
+    gap: 1rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .banner__features li {
+    font-size: 1.8rem;
+  }
+
+  .best-sellers {
+    scroll-margin-top: 15rem;
+    padding-bottom: 3.2rem;
+  }
+
+  .best-sellers > .container {
+    width: min(100%, calc(100% - 2.4rem));
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .best-sellers__head {
+    padding: 2rem 0 1.4rem;
+  }
+
+  .best-sellers__item {
+    grid-template-columns: 6.4rem minmax(0, 1fr);
+    gap: 1.6rem;
+    padding: 1.6rem;
+  }
+
+  .best-sellers__price {
+    grid-column: 2 / 3;
+    justify-self: start;
+    font-size: 2rem;
+  }
+
+  .best-sellers__name {
+    font-size: 1.9rem;
+  }
+
+  .best-sellers__image-wrap {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+
+  .best-sellers__image {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+}

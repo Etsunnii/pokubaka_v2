@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Товар - PokuBaka</title>
+		<meta
+			name="description"
+			content="Страница цифрового товара PokuBaka. Выберите товар, оплатите заказ и получите данные по заказу."
+		/>
+		<link rel="canonical" href="https://pokubaka.ru/item" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="product" />
+		<meta property="og:site_name" content="PokuBaka" />
+		<meta property="og:title" content="Товар - PokuBaka" />
+		<meta property="og:description" content="Страница цифрового товара PokuBaka с удобной оплатой и поддержкой." />
+		<meta property="og:url" content="https://pokubaka.ru/item" />
+		<meta property="og:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Товар - PokuBaka" />
+		<meta name="twitter:description" content="Страница цифрового товара PokuBaka с удобной оплатой и поддержкой." />
+		<meta name="twitter:image" content="https://pokubaka.ru/assets/icons/128x128.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/16x16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/32x32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/64x64.png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/120x120.png"
+			sizes="120x120"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/128x128.png"
+			sizes="128x128"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/css/nullstyles.css" />
+		<link rel="stylesheet" href="/css/var.css?v=20260709-unified-loader" />
+		<link rel="stylesheet" href="/css/item.css?v=20260708-duration-original" />
+		<link rel="stylesheet" href="/css/item-adaptive.css?v=20260707-faq-first-gap-tight" />
+		<script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>
+	</head>
+	<body>
+		<div id="loadingOverlay" class="loading-overlay">
+			<div class="loading-overlay__content" role="status" aria-live="polite">
+				<span class="loading-overlay__spinner" aria-hidden="true"></span>
+				<span>Загрузка...</span>
+			</div>
+		</div>
+		<div id="contentContainer">
+			<header class="header">
+				<div class="container">
+					<div class="header__content">
+						<a href="/" class="header-logo" aria-label="PokuBaka">
+							<span class="header-logo__icon">
+								<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+							</span>
+							<span class="header-logo__text">
+								<span>Poku</span><span>Baka</span>
+							</span>
+						</a>
+						<nav class="header-nav" aria-label="Основная навигация">
+							<a href="/" class="header-link" data-nav="home">Главная</a>
+							<a href="/catalog" class="header-link" data-nav="catalog">Каталог</a>
+							<a href="/faq" class="header-link header-link-faq" data-nav="faq">FAQ</a>
+							<a href="https://t.me/Reviewspokubaka" class="header-link" data-nav="reviews">Отзывы</a>
+							<a href="/news" class="header-link header-link-news" data-nav="news">Новости</a>
+						</nav>
+						<div class="header-actions">
+							<a href="https://oplata.info/info/" class="header-link header-link-purchases" target="_blank" rel="noopener">
+								<img class="header-link-purchases__icon" src="/assets/icons/shopping-bag.png" alt="" />
+								<span>Мои покупки</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<section class="product-path" aria-label="Навигация по товару">
+				<div class="container">
+					<a class="product-path__brand" href="/" aria-label="PokuBaka">
+						<span class="product-path__mark">P</span>
+						<span class="product-path__name"><span>Poku</span><span>Baka</span></span>
+					</a>
+					<nav class="product-path__breadcrumbs" aria-label="Хлебные крошки">
+						<a href="/">Главная</a>
+						<span aria-hidden="true">›</span>
+						<a href="/catalog">Каталог</a>
+						<span aria-hidden="true">›</span>
+						<a href="/catalog" id="itemBreadcrumbCategory">Категория</a>
+						<span aria-hidden="true" id="itemBreadcrumbCategorySeparator">›</span>
+						<span id="itemBreadcrumbName">Товар</span>
+					</nav>
+				</div>
+			</section>
+
+			<div class="wrapper">
+				<section class="info">
+					<div class="container">
+						<div class="info__content">
+							<img alt="Изображение товара" class="info__img" width="420" height="560" fetchpriority="high" decoding="async" />
+							<div class="info__text">
+								<h2 class="info__category" id="itemCategory"></h2>
+								<h1 class="info__title" id="itemTitle"></h1>
+								<p class="info__desc" id="itemDesc"></p>
+								<button class="info__spoiler">
+									<p>Показать описание</p>
+									<svg
+										class="info__spoiler-icon"
+										width="18"
+										height="11"
+										viewBox="0 0 18 11"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fill-rule="evenodd"
+											clip-rule="evenodd"
+											d="M0.203368 0.37581C0.267669 0.309308 0.344057 0.256546 0.428156 0.220546C0.512255 0.184546 0.602412 0.166016 0.693464 0.166016C0.784516 0.166016 0.874673 0.184546 0.958772 0.220546C1.04287 0.256546 1.11926 0.309308 1.18356 0.37581L9.00018 8.44089L16.8168 0.37581C16.8812 0.309416 16.9576 0.256748 17.0417 0.220816C17.1258 0.184884 17.2159 0.16639 17.3069 0.16639C17.3979 0.16639 17.488 0.184884 17.5721 0.220816C17.6562 0.256748 17.7326 0.309416 17.797 0.37581C17.8614 0.442204 17.9124 0.521026 17.9472 0.607774C17.9821 0.694523 18 0.787499 18 0.881395C18 0.975291 17.9821 1.06827 17.9472 1.15502C17.9124 1.24176 17.8614 1.32059 17.797 1.38698L9.49028 9.95622C9.42598 10.0227 9.34959 10.0755 9.26549 10.1115C9.18139 10.1475 9.09123 10.166 9.00018 10.166C8.90913 10.166 8.81897 10.1475 8.73487 10.1115C8.65077 10.0755 8.57439 10.0227 8.51009 9.95622L0.203368 1.38698C0.138903 1.32065 0.0877574 1.24184 0.0528602 1.15509C0.0179631 1.06833 0 0.975325 0 0.881395C0 0.787466 0.0179631 0.694459 0.0528602 0.607703C0.0877574 0.520946 0.138903 0.442144 0.203368 0.37581Z"
+											fill="#B0A6C4"
+										/>
+									</svg>
+								</button>
+							</div>
+							<div class="info__calc">
+								<h2 class="info__price" id="itemPrice"></h2>
+								<div id="selectContainer"></div>
+
+								<button
+									class="info__btn-buymodal"
+									data-bs-toggle="modal"
+									data-bs-target="#bidModal"
+									type="button"
+								>
+									Купить сейчас
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="guide">
+					<div class="guide__title-block title-block">
+						<div class="container">
+							<h2 class="guide__title">Инструкция</h2>
+						</div>
+					</div>
+					<div class="container">
+						<div class="guide__content">
+							<ol class="guide__list" id="itemGuideContainer">
+								<!-- <li class="guide__elem">1. Регион аккаунта должен быть: Индия</li>
+								  <li class="guide__elem">
+									  2. Для регистрации аккаунта с регионом Индия вам потребуется
+									  сменить IP на Индию
+								  </li>
+								  <li class="guide__elem">
+									  3. Полученный ключ вам необходимо вставить в настройках своего
+									  аккаунта Spotify
+								  </li> -->
+							</ol>
+						</div>
+					</div>
+				</section>
+
+				<section class="questions">
+					<div class="questions__title-block title-block">
+						<div class="container">
+							<h2 class="questions__title">Ответы на вопросы</h2>
+						</div>
+					</div>
+					<div class="container">
+						<div class="questions__content">
+							<div class="questions__container" id="questionsContainer">
+								<!-- <div class="accordion-item questions__item">
+									  <h2 class="accordion-header" id="headingOne">
+										  <button
+											  class="accordion-button collapsed"
+											  type="button"
+											  data-bs-toggle="collapse"
+											  data-bs-target="#collapseOne"
+											  aria-expanded="false"
+											  aria-controls="collapseOne"
+										  >
+											  Если до этого была подписка другого региона?
+										  </button>
+									  </h2>
+									  <div
+										  id="collapseOne"
+										  class="accordion-collapse collapse"
+										  aria-labelledby="headingOne"
+										  data-bs-parent="#accordionExample"
+									  >
+										  <div class="accordion-body">
+											  Да, код можно активировать на этом аккаунте, изменив IP на
+											  Индию
+										  </div>
+									  </div>
+								  </div> -->
+							</div>
+						</div>
+					</div>
+				</section>
+				<footer class="footer shop-footer">
+					<div class="shop-footer__inner">
+						<div class="shop-footer__brand">
+							<a class="shop-footer__logo" href="/" aria-label="PokuBaka">
+								<span class="shop-footer__logo-icon">
+									<img src="/assets/images/header-logo.png?v=20260610-logo3" alt="" />
+								</span>
+								<span class="shop-footer__logo-text"><span>Poku</span><span>Baka</span></span>
+							</a>
+							<p class="shop-footer__description">
+								Магазин цифровых товаров. Игры, подписки и ключи с мгновенной доставкой.
+							</p>
+						</div>
+						<div class="shop-footer__column">
+							<h3 class="shop-footer__title">Категории</h3>
+							<nav class="shop-footer__links" id="footerCategories" aria-label="Категории"></nav>
+						</div>
+						<div class="shop-footer__column">
+							<h3 class="shop-footer__title">Информация</h3>
+							<nav class="shop-footer__links" aria-label="Информация">
+								<a class="shop-footer__link shop-footer__link--icon shop-footer__link--offer" href="/docs/oferta.pdf">Публичная оферта</a>
+								<a class="shop-footer__link shop-footer__link--icon shop-footer__link--privacy" href="/docs/politika.pdf">Политика конфиденциальности</a>
+								<a class="shop-footer__link shop-footer__link--icon shop-footer__link--faq" href="/faq">FAQ</a>
+								<a class="shop-footer__link shop-footer__link--icon shop-footer__link--reviews" href="https://t.me/Reviewspokubaka">Отзывы</a>
+							</nav>
+						</div>
+						<div class="shop-footer__column shop-footer__contacts">
+							<h3 class="shop-footer__title">Контакты</h3>
+							<nav class="shop-footer__contact-list" aria-label="Контакты">
+								<a class="shop-footer__contact shop-footer__contact--telegram" href="https://t.me/pokubakasupport" target="_blank" rel="noopener">
+									<img src="/assets/icons/telegram.svg" alt="" />
+									<span><strong>Telegram</strong><small>Ответим быстро</small></span>
+								</a>
+								<a class="shop-footer__contact shop-footer__contact--channel" href="https://t.me/pokubaka" target="_blank" rel="noopener">
+									<img src="/assets/icons/telegram.svg" alt="" />
+									<span><strong>Telegram канал</strong><small>Новости</small></span>
+								</a>
+								<a class="shop-footer__contact shop-footer__contact--email" href="mailto:support@pokubaka.ru">
+									<img src="/assets/icons/email.svg" alt="" />
+									<span><strong>Email</strong><small>support@pokubaka.ru</small></span>
+								</a>
+							</nav>
+						</div>
+					</div>
+					<div class="shop-footer__bottom">
+						<p>Все права защищены. PokuBaka не является официальным представителем указанных брендов.</p>
+					</div>
+					<div class="container shop-footer__legacy" aria-hidden="true">
+						<div class="footer__content">
+							<div class="footer-top">
+								<a href="/">
+									<img
+										src="/assets/images/logotxt.webp"
+										alt="logo"
+										class="footer-logo"
+									/>
+								</a>
+								<div class="footer__block">
+									<a href="/docs/politika.pdf" class="footer__text">
+										Политика конфиденциальности</a
+									>
+									<a href="/docs/oferta.pdf" class="footer__text"
+										>Публичная оферта</a
+									>
+								</div>
+								<div class="footer__block">
+									<a
+										href="https://t.me/pokubakasupport"
+										class="footer__row footer__link"
+										><img src="/assets/icons/telegram.svg" alt="" /> Telegram</a
+									>
+									<a
+										href="mailto:support@pokubaka.ru"
+										class="footer__row footer__link"
+										><img src="/assets/icons/email.svg" alt="" />
+										support@pokubaka.ru</a
+									>
+								</div>
+							</div>
+							<div class="footer-bottom">
+								Все права защищены. Копирование любых материалов сайта запрещено!
+								Все названия продуктов и игр, компаний и марок, логотипы,
+								товарные знаки и другие материалы являются собственностью
+								соответствующих владельцев.
+							</div>
+						</div>
+					</div>
+				</footer>
+				<div class="container modal-container">
+					<!-- Modal Bid -->
+					<div
+						class="modal fade"
+						id="bidModal"
+						tabindex="-1"
+						aria-labelledby="bidModalLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal__title">Введите почту для оплаты</div>
+								<form class="payform-tbank" name="payform-tbank">
+									<input
+										class="payform-tbank-row modal__input"
+										type="email"
+										placeholder="E-mail"
+										name="email"
+										id="email"
+										autocomplete="email"
+										required
+									/>
+									<p class="payment-email-error" id="paymentEmailError" hidden></p>
+
+									<div class="modal__btns">
+										<button
+											type="button"
+											class="btn_close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										>
+											Отмена</button
+										><button
+											type="button"
+											class="payform-tbank-row payform-tbank-btn info__btn-buy"
+										>
+											Оплатить
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal Success Payment -->
+					<div
+						class="modal fade"
+						id="successPaymentModal"
+						tabindex="-1"
+						aria-labelledby="successPaymentModalLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog payment">
+							<div class="modal-content payment">
+								<div class="modal__title">Спасибо за покупку!</div>
+								<div class="paydBlock">
+									Твой товар: <span class="paydItem"></span>
+								</div>
+								<button type="button" class="btn_close copy-paid-item" id="copyPaidItemBtn">Скопировать товар</button>
+								<div class="modal__desc">
+									Порадуйте котика! Оставьте отзыв в нашем телеграм чате
+								</div>
+								<div action="#" class="modal__body">
+									<a href="https://t.me/Reviewspokubaka" class="modal__tg-link">
+										<div class="link-container">
+											<div class="icon">
+												<svg
+													viewBox="0 0 66 66"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M66 33C66 41.7521 62.5232 50.1458 56.3345 56.3345C50.1458 62.5232 41.7521 66 33 66C24.2479 66 15.8542 62.5232 9.66548 56.3345C3.47678 50.1458 0 41.7521 0 33C0 24.2479 3.47678 15.8542 9.66548 9.66548C15.8542 3.47678 24.2479 0 33 0C41.7521 0 50.1458 3.47678 56.3345 9.66548C62.5232 15.8542 66 24.2479 66 33ZM34.1839 24.3623C30.9719 25.6988 24.5561 28.4625 14.9366 32.6535C13.3774 33.2723 12.5592 33.88 12.4823 34.4767C12.3585 35.4791 13.6166 35.8751 15.3285 36.4155L16.0504 36.6424C17.7334 37.191 20.0021 37.8304 21.1777 37.8551C22.2502 37.8826 23.4437 37.4426 24.7582 36.5351C33.748 30.4686 38.3873 27.4024 38.676 27.3364C38.8823 27.2869 39.171 27.2291 39.3607 27.4024C39.5505 27.5756 39.534 27.8974 39.5134 27.984C39.3896 28.5161 34.452 33.1031 31.8986 35.4791C31.1025 36.2216 30.5374 36.7455 30.4219 36.8651C30.1676 37.1251 29.9091 37.3809 29.6464 37.6324C28.0789 39.1421 26.9074 40.2724 29.7083 42.1204C31.0571 43.0114 32.1379 43.7415 33.2145 44.4757C34.386 45.276 35.5575 46.0721 37.0755 47.0704C37.4605 47.3234 37.8318 47.5805 38.1893 47.8417C39.5546 48.8152 40.788 49.6898 42.3019 49.5495C43.1846 49.467 44.0962 48.642 44.5583 46.167C45.6514 40.3219 47.8005 27.6623 48.2955 22.4441C48.3266 22.0104 48.3086 21.5745 48.2419 21.1448C48.2019 20.7983 48.0342 20.4792 47.7716 20.2496C47.3958 19.9915 46.9487 19.8574 46.4929 19.866C45.2554 19.8866 43.3455 20.5508 34.1839 24.3623Z"
+														fill="white"
+													/>
+												</svg>
+											</div>
+											<p>Telegram чат</p>
+										</div>
+									</a>
+									<img
+										src="/assets/images/success-payment.webp"
+										alt="success Payment"
+										class="modal__img"
+									/>
+									<div class="modal__single-btn">
+										<button
+											class="btn_close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										>
+											Закрыть
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal Error Payment -->
+					<div
+						class="modal fade"
+						id="errorPaymentModal"
+						tabindex="-1"
+						aria-labelledby="errorPaymentModalLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog payment">
+							<div class="modal-content payment">
+								<div class="modal__title">Произошла ошибка</div>
+								<div class="modal__desc">Попробуйте позже</div>
+								<div action="#" class="modal__body">
+									<a href="https://t.me/pokubakasupport" class="modal__tg-link">
+										<div class="link-container">
+											<div class="icon">
+												<svg
+													viewBox="0 0 66 66"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M66 33C66 41.7521 62.5232 50.1458 56.3345 56.3345C50.1458 62.5232 41.7521 66 33 66C24.2479 66 15.8542 62.5232 9.66548 56.3345C3.47678 50.1458 0 41.7521 0 33C0 24.2479 3.47678 15.8542 9.66548 9.66548C15.8542 3.47678 24.2479 0 33 0C41.7521 0 50.1458 3.47678 56.3345 9.66548C62.5232 15.8542 66 24.2479 66 33ZM34.1839 24.3623C30.9719 25.6988 24.5561 28.4625 14.9366 32.6535C13.3774 33.2723 12.5592 33.88 12.4823 34.4767C12.3585 35.4791 13.6166 35.8751 15.3285 36.4155L16.0504 36.6424C17.7334 37.191 20.0021 37.8304 21.1777 37.8551C22.2502 37.8826 23.4437 37.4426 24.7582 36.5351C33.748 30.4686 38.3873 27.4024 38.676 27.3364C38.8823 27.2869 39.171 27.2291 39.3607 27.4024C39.5505 27.5756 39.534 27.8974 39.5134 27.984C39.3896 28.5161 34.452 33.1031 31.8986 35.4791C31.1025 36.2216 30.5374 36.7455 30.4219 36.8651C30.1676 37.1251 29.9091 37.3809 29.6464 37.6324C28.0789 39.1421 26.9074 40.2724 29.7083 42.1204C31.0571 43.0114 32.1379 43.7415 33.2145 44.4757C34.386 45.276 35.5575 46.0721 37.0755 47.0704C37.4605 47.3234 37.8318 47.5805 38.1893 47.8417C39.5546 48.8152 40.788 49.6898 42.3019 49.5495C43.1846 49.467 44.0962 48.642 44.5583 46.167C45.6514 40.3219 47.8005 27.6623 48.2955 22.4441C48.3266 22.0104 48.3086 21.5745 48.2419 21.1448C48.2019 20.7983 48.0342 20.4792 47.7716 20.2496C47.3958 19.9915 46.9487 19.8574 46.4929 19.866C45.2554 19.8866 43.3455 20.5508 34.1839 24.3623Z"
+														fill="white"
+													/>
+												</svg>
+											</div>
+											<p>Поддержка</p>
+										</div>
+									</a>
+									<img
+										src="/assets/images/error-payment.webp"
+										alt="error Payment"
+										class="modal__img"
+									/>
+									<div class="modal__single-btn">
+										<button
+											class="btn_close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										>
+											Закрыть
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Modal pending Payment -->
+					<div
+						class="modal fade"
+						id="pendingPaymentModal"
+						tabindex="-1"
+						aria-labelledby="pendingPaymentModalLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog payment">
+							<div class="modal-content payment">
+								<div class="modal__title">Не оплачено</div>
+								<div action="#" class="modal__body">
+									<a href="https://t.me/pokubakasupport" class="modal__tg-link">
+										<div class="link-container">
+											<div class="icon">
+												<svg
+													viewBox="0 0 66 66"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														d="M66 33C66 41.7521 62.5232 50.1458 56.3345 56.3345C50.1458 62.5232 41.7521 66 33 66C24.2479 66 15.8542 62.5232 9.66548 56.3345C3.47678 50.1458 0 41.7521 0 33C0 24.2479 3.47678 15.8542 9.66548 9.66548C15.8542 3.47678 24.2479 0 33 0C41.7521 0 50.1458 3.47678 56.3345 9.66548C62.5232 15.8542 66 24.2479 66 33ZM34.1839 24.3623C30.9719 25.6988 24.5561 28.4625 14.9366 32.6535C13.3774 33.2723 12.5592 33.88 12.4823 34.4767C12.3585 35.4791 13.6166 35.8751 15.3285 36.4155L16.0504 36.6424C17.7334 37.191 20.0021 37.8304 21.1777 37.8551C22.2502 37.8826 23.4437 37.4426 24.7582 36.5351C33.748 30.4686 38.3873 27.4024 38.676 27.3364C38.8823 27.2869 39.171 27.2291 39.3607 27.4024C39.5505 27.5756 39.534 27.8974 39.5134 27.984C39.3896 28.5161 34.452 33.1031 31.8986 35.4791C31.1025 36.2216 30.5374 36.7455 30.4219 36.8651C30.1676 37.1251 29.9091 37.3809 29.6464 37.6324C28.0789 39.1421 26.9074 40.2724 29.7083 42.1204C31.0571 43.0114 32.1379 43.7415 33.2145 44.4757C34.386 45.276 35.5575 46.0721 37.0755 47.0704C37.4605 47.3234 37.8318 47.5805 38.1893 47.8417C39.5546 48.8152 40.788 49.6898 42.3019 49.5495C43.1846 49.467 44.0962 48.642 44.5583 46.167C45.6514 40.3219 47.8005 27.6623 48.2955 22.4441C48.3266 22.0104 48.3086 21.5745 48.2419 21.1448C48.2019 20.7983 48.0342 20.4792 47.7716 20.2496C47.3958 19.9915 46.9487 19.8574 46.4929 19.866C45.2554 19.8866 43.3455 20.5508 34.1839 24.3623Z"
+														fill="white"
+													/>
+												</svg>
+											</div>
+											<p>Поддержка</p>
+										</div>
+									</a>
+									<img
+										src="/assets/images/error-payment.webp"
+										alt="error Payment"
+										class="modal__img"
+									/>
+									<div class="modal__single-btn">
+										<button
+											class="btn_close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										>
+											Закрыть
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a
+			class="digiseller-chat-button"
+			href="/digiseller-chat"
+			target="_blank"
+			rel="noopener"
+			aria-label="Открыть чат поддержки Digiseller"
+		>
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path
+					d="M20 11.55c0 4.06-3.6 7.35-8.03 7.35-1.28 0-2.5-.28-3.57-.78L4 19.35l1.28-3.5A6.86 6.86 0 0 1 3.94 11.55C3.94 7.49 7.54 4.2 11.97 4.2S20 7.49 20 11.55Z"
+				/>
+			</svg>
+		</a>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/layout/item.js"></script>
+	<script type="module" src="/js/components/headerNav.js?v=20260709-faq-loader-blocked"></script>
+		<script type="module" src="/js/components/digisellerChat.js?v=20260706-digiseller-chat-restored"></script>
+		<script type="module" src="/js/pages/item/item.js?v=20260707-category-breadcrumb"></script>
+		<script type="module" src="/js/components/footer.js?v=20260706-footer-category-names"></script>
+	</body>
+</html>
+
+
+

@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Админ Панель</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/16x16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/32x32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/64x64.png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/120x120.png"
+			sizes="120x120"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/128x128.png"
+			sizes="128x128"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/css/dashboard.css?v=20260709-unified-loader" />
+	</head>
+	<body>
+		<div id="loadingOverlay" class="loading-overlay">
+			<div class="loading-overlay__content" role="status" aria-live="polite">
+				<span class="loading-overlay__spinner" aria-hidden="true"></span>
+				<span>Загрузка...</span>
+			</div>
+		</div>
+		<div id="contentContainer" style="visibility: hidden">
+			<div class="container mt-5">
+				<div class="row text-center">
+					<!-- Всего товаров -->
+					<div class="col-md-4">
+						<div class="stat-card bg-primary text-white p-4 rounded shadow-sm">
+							<h5 class="mb-3">Всего товаров</h5>
+							<div class="stat-value" id="totalProducts">0</div>
+						</div>
+					</div>
+
+					<!-- Всего категорий -->
+					<div class="col-md-4">
+						<div class="stat-card bg-info text-white p-4 rounded shadow-sm">
+							<h5 class="mb-3">Всего категорий</h5>
+							<div class="stat-value" id="totalCategories">0</div>
+						</div>
+					</div>
+
+					<!-- Всего куплено товаров -->
+					<div class="col-md-4">
+						<div class="stat-card bg-success text-white p-4 rounded shadow-sm">
+							<h5 class="mb-3">Всего куплено товаров</h5>
+							<div class="stat-value" id="totalItemsSold">0</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<!-- Товары -->
+				<h2 class="text-center mt-4 items-title">Список товаров</h2>
+
+				<!-- Поиск по названию -->
+				<div class="mb-3 d-flex justify-content-between align-items-center product-actions">
+					<!-- Поле поиска -->
+					<input
+						type="text"
+						id="searchInput"
+						class="form-control me-2 flex-grow-1 product-action-control"
+						placeholder="Поиск по названию товара"
+					/>
+
+					<!-- Селект фильтрации -->
+					<select
+						id="categoryFilter"
+						class="form-select me-2 flex-grow-1 product-action-control"
+					>
+						<option value="">Все категории</option>
+						<!-- Категории будут добавляться через JS -->
+					</select>
+					<button
+						class="btn btn-success product-action-btn"
+						onclick="openAddModal()"
+					>
+						Добавить товар
+					</button>
+					<button
+						class="btn btn-outline-info product-action-btn"
+						id="syncDigisellerBtn"
+						type="button"
+					>
+						Синхронизировать с Digiseller
+					</button>
+					<button
+						class="btn btn-outline-success product-action-btn"
+						id="showAllProductsBtn"
+						type="button"
+					>
+						Показать все в витрине
+					</button>
+					<button
+						class="btn btn-outline-danger product-action-btn"
+						id="deleteSelectedProductsBtn"
+						type="button"
+						disabled
+					>
+						Удалить выбранное
+					</button>
+				</div>
+
+				<div class="mb-3 d-flex justify-content-between align-items-center product-folder-actions">
+					<select
+						id="folderFilter"
+						class="form-select product-action-control"
+					>
+						<option value="">Общий список</option>
+						<option value="__none">Без папки</option>
+					</select>
+					<input
+						type="text"
+						id="newProductFolderName"
+						class="form-control product-action-control"
+						placeholder="Название папки"
+					/>
+					<button
+						class="btn btn-outline-light product-action-btn"
+						id="createProductFolderBtn"
+						type="button"
+					>
+						Создать папку
+					</button>
+					<select
+						id="moveToFolderSelect"
+						class="form-select product-action-control"
+					>
+						<option value="">Переместить в папку...</option>
+					</select>
+					<button
+						class="btn btn-outline-warning product-action-btn"
+						id="moveSelectedToFolderBtn"
+						type="button"
+						disabled
+					>
+						Переместить выбранные
+					</button>
+				</div>
+
+				<div id="productList" class="mb-4"></div>
+				<div id="productPagination" class="product-pagination mb-4"></div>
+
+				<hr />
+
+				<!-- Категории -->
+				<h2 class="text-center mt-4">Список категорий</h2>
+				<button
+					class="btn btn-primary mb-3 addItem"
+					onclick="openAddCategoryModal()"
+				>
+					Добавить категорию
+				</button>
+				<div id="categoryList" class="mb-4"></div>
+
+				<hr />
+
+				<section class="admin-best-sellers-panel">
+					<div class="d-flex justify-content-between align-items-center mb-3">
+						<h2 class="text-center mt-4 mb-0">Хит продаж</h2>
+						<button class="btn btn-outline-light" id="refreshBestSellers" type="button">
+							Обновить
+						</button>
+					</div>
+
+					<div class="admin-best-sellers">
+						<div class="admin-best-sellers__column">
+							<h3>Все товары</h3>
+							<div id="adminProductsForBestSellers"></div>
+						</div>
+						<div class="admin-best-sellers__column">
+							<h3>Выбранные товары</h3>
+							<div id="adminSelectedBestSellers"></div>
+							<button class="btn btn-success w-100 mt-3" id="saveBestSellersOrder" type="button">
+								Сохранить порядок
+							</button>
+							<p class="faq-admin-message" id="bestSellersMessage"></p>
+						</div>
+					</div>
+				</section>
+
+				<hr />
+
+				<section class="admin-faq-panel">
+					<div class="d-flex justify-content-between align-items-center mb-3 faq-admin-head">
+						<h2 class="text-center mt-4 mb-0">FAQ</h2>
+						<button class="btn btn-outline-light" id="refreshFaq" type="button">
+							Обновить FAQ
+						</button>
+					</div>
+
+					<form id="faqSectionForm" class="admin-faq-form mb-4">
+						<input type="hidden" id="faqSectionId" />
+						<div class="mb-3">
+							<label for="faqSectionTitle" class="form-label text-white">Блок FAQ</label>
+							<input
+								type="text"
+								class="form-control"
+								id="faqSectionTitle"
+								placeholder="Например: Заказы"
+								required
+							/>
+						</div>
+						<div class="d-flex gap-2 flex-wrap">
+							<button class="btn btn-primary" type="submit" id="saveFaqSectionBtn">
+								Добавить блок
+							</button>
+							<button class="btn btn-secondary" type="button" id="cancelFaqSectionEditBtn" hidden>
+								Отменить редактирование блока
+							</button>
+						</div>
+						<p class="faq-admin-message" id="faqSectionMessage"></p>
+					</form>
+
+					<form id="faqForm" class="admin-faq-form mb-4">
+						<input type="hidden" id="faqId" />
+						<div class="mb-3">
+							<label for="faqSectionSelect" class="form-label text-white">В какой блок поместить вопрос</label>
+							<select class="form-select" id="faqSectionSelect" required></select>
+						</div>
+						<div class="mb-3">
+							<label for="faqQuestion" class="form-label text-white">Вопрос</label>
+							<input
+								type="text"
+								class="form-control"
+								id="faqQuestion"
+								placeholder="Например, как оплатить товар?"
+								required
+							/>
+						</div>
+						<div class="mb-3">
+							<label for="faqAnswer" class="form-label text-white">Ответ</label>
+							<textarea
+								class="form-control"
+								id="faqAnswer"
+								rows="4"
+								placeholder="Напишите ответ"
+								required
+							></textarea>
+						</div>
+						<div class="form-check mb-3">
+							<input class="form-check-input" type="checkbox" id="faqActive" checked />
+							<label class="form-check-label" for="faqActive">
+								Показывать в FAQ
+							</label>
+						</div>
+						<div class="d-flex gap-2 flex-wrap">
+							<button class="btn btn-primary" type="submit" id="saveFaqBtn">
+								Добавить FAQ
+							</button>
+							<button class="btn btn-secondary" type="button" id="cancelFaqEditBtn" hidden>
+								Отменить редактирование
+							</button>
+						</div>
+						<p class="faq-admin-message" id="faqMessage"></p>
+					</form>
+
+					<div class="admin-faq-list" id="adminFaqList"></div>
+				</section>
+
+				<hr />
+
+				<section class="admin-news-category-panel">
+					<div class="d-flex justify-content-between align-items-center mb-3 faq-admin-head">
+						<h2 class="text-center mt-4 mb-0">Категории новостей</h2>
+						<button class="btn btn-outline-light" id="refreshAdminNewsCategories" type="button">
+							Обновить категории
+						</button>
+					</div>
+
+					<form id="adminNewsCategoryForm" class="admin-news-form mb-4">
+						<input type="hidden" id="adminNewsCategoryId" />
+						<div class="mb-3">
+							<label for="adminNewsCategoryName" class="form-label text-white">Название категории</label>
+							<input class="form-control" type="text" id="adminNewsCategoryName" maxlength="80" required />
+						</div>
+						<div class="form-check mb-3">
+							<input class="form-check-input" type="checkbox" id="adminNewsCategoryActive" checked />
+							<label class="form-check-label" for="adminNewsCategoryActive">Активна</label>
+						</div>
+						<div class="d-flex gap-2 flex-wrap">
+							<button class="btn btn-primary" type="submit" id="saveAdminNewsCategoryBtn">Сохранить категорию</button>
+							<button class="btn btn-secondary" type="button" id="cancelAdminNewsCategoryEditBtn" hidden>Отменить редактирование</button>
+						</div>
+						<p class="faq-admin-message" id="adminNewsCategoryMessage"></p>
+					</form>
+
+					<div class="admin-news-category-list" id="adminNewsCategoryList"></div>
+				</section>
+
+				<hr />
+
+				<section class="admin-news-panel">
+					<div class="d-flex justify-content-between align-items-center mb-3 faq-admin-head">
+						<h2 class="text-center mt-4 mb-0">Новости</h2>
+						<button class="btn btn-outline-light" id="refreshAdminNews" type="button">
+							Обновить новости
+						</button>
+					</div>
+
+					<form id="adminNewsForm" class="admin-news-form mb-4">
+						<input type="hidden" id="adminNewsId" />
+						<div class="mb-3">
+							<label for="adminNewsImage" class="form-label text-white">Фотография новости</label>
+							<input class="form-control" type="file" id="adminNewsImage" accept="image/png,image/jpeg,image/webp" />
+							<div id="adminNewsImagePreview" class="admin-news-preview mt-3"></div>
+						</div>
+						<div class="mb-3">
+							<label for="adminNewsTitle" class="form-label text-white">Заголовок</label>
+							<input class="form-control" type="text" id="adminNewsTitle" maxlength="140" required />
+						</div>
+						<div class="mb-3">
+							<label for="adminNewsDescription" class="form-label text-white">Короткое описание</label>
+							<textarea class="form-control" id="adminNewsDescription" maxlength="500" rows="3" required></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="adminNewsContent" class="form-label text-white">Полный текст новости</label>
+							<textarea class="form-control" id="adminNewsContent" rows="7" required></textarea>
+						</div>
+						<div class="admin-news-form__row">
+							<div class="mb-3">
+								<label for="adminNewsCategorySelect" class="form-label text-white">Категория новости</label>
+								<select class="form-select" id="adminNewsCategorySelect" required></select>
+							</div>
+							<div class="mb-3">
+								<label for="adminNewsPublishedAt" class="form-label text-white">Дата публикации</label>
+								<input class="form-control" type="date" id="adminNewsPublishedAt" />
+							</div>
+						</div>
+						<div class="form-check mb-3">
+							<input class="form-check-input" type="checkbox" id="adminNewsActive" checked />
+							<label class="form-check-label" for="adminNewsActive">Активна</label>
+						</div>
+						<div class="d-flex gap-2 flex-wrap">
+							<button class="btn btn-primary" type="submit" id="saveAdminNewsBtn">Сохранить новость</button>
+							<button class="btn btn-secondary" type="button" id="cancelAdminNewsEditBtn" hidden>Отменить редактирование</button>
+						</div>
+						<p class="faq-admin-message" id="adminNewsMessage"></p>
+					</form>
+
+					<div class="admin-news-list" id="adminNewsList"></div>
+				</section>
+			</div>
+
+			<!-- Уведомления -->
+			<div id="toastContainer"></div>
+
+			<!-- Модалка для добавления/редактирования товара -->
+			<div
+				class="modal fade"
+				id="productModal"
+				tabindex="-1"
+				aria-labelledby="productModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="productModalLabel">Добавить товар</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<!-- Блок для отображения ошибок -->
+							<div id="errorMessages" class="alert alert-danger d-none"></div>
+
+							<form id="productForm" novalidate>
+								<input type="hidden" id="itemId" />
+
+								<!-- Название товара -->
+								<div class="mb-3">
+									<label for="name" class="form-label">Название товара</label>
+									<input type="text" class="form-control" id="name" required />
+								</div>
+
+								<!-- Описание товара -->
+								<div class="mb-3">
+									<label for="desc" class="form-label">Описание товара</label>
+									<textarea class="form-control" id="desc" required></textarea>
+								</div>
+
+								<!-- Руководство -->
+								<div class="mb-3">
+									<label for="guide" class="form-label">Руководство</label>
+									<textarea class="form-control" id="guide" required></textarea>
+								</div>
+
+								<!-- Цена -->
+								<div class="mb-3">
+									<label for="price" class="form-label">Цена</label>
+									<input type="number" class="form-control" id="price" />
+								</div>
+								<div class="mb-3">
+									<label for="digisellerProductId" class="form-label">ID товара Digiseller</label>
+									<input
+										type="text"
+										class="form-control"
+										id="digisellerProductId"
+										placeholder="Например: 2038820"
+									/>
+									<div class="form-text">Для обычного товара это основной ID. Для подписки можно указать отдельный ID в каждой строке срока.</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="form-check">
+										<input
+											class="form-check-input"
+											type="checkbox"
+											id="subscriptionCheckbox"
+										/>
+										<label class="form-check-label" for="subscriptionCheckbox">
+											Подписка
+										</label>
+									</div>
+								</div>
+
+								<div class="mb-3" id="durationsContainer" style="display: none">
+									<label for="durations" class="form-label"
+										>Сроки подписки</label
+									>
+									<div id="costsContainer"></div>
+									<button
+										type="button"
+										class="btn btn-secondary mt-2"
+										id="addCostBtn"
+									>
+										Добавить срок, цену и ID Digiseller
+									</button>
+								</div>
+
+								<!-- Вопросы и ответы -->
+								<div class="mb-3">
+									<label class="form-label">Вопросы и ответы</label>
+									<div id="questionsContainer"></div>
+									<button
+										type="button"
+										class="btn btn-secondary mt-2"
+										id="addQuestionBtn"
+									>
+										Добавить вопрос
+									</button>
+								</div>
+
+								<!-- Категория -->
+								<div class="mb-3">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="isVisible" />
+										<label class="form-check-label" for="isVisible">Показывать в магазине</label>
+									</div>
+									<div class="form-text">Если галочка снята, товар остается только в админке и не показывается покупателям.</div>
+								</div>
+								<div class="mb-3">
+									<label for="categorySelect" class="form-label"
+										>Категория</label
+									>
+									<select class="form-select" id="categorySelect" required>
+										<!-- Опции будут заполняться через JS -->
+									</select>
+								</div>
+
+								<!-- Аккаунты -->
+								<div class="mb-3">
+	<label for="newAccounts" class="form-label">Новое содержимое товара</label>
+	<textarea
+		class="form-control"
+		id="newAccounts"
+		placeholder="Каждый товар с новой строки. Новые строки добавятся перед уже загруженными."
+	></textarea>
+	<div class="form-text">Новые товары сохраняются сверху списка, карточка товара остается на своем месте.</div>
+</div>
+
+<div class="mb-3">
+	<label class="form-label">Загруженное содержимое</label>
+	<div id="accountStockInfo" class="small text-muted mb-2"></div>
+	<div id="accountsList" class="accounts-list"></div>
+	<button type="button" class="btn btn-outline-danger mt-2" id="clearAccountsBtn">
+		Удалить все содержимое
+	</button>
+</div>
+
+								<!-- Input для загрузки изображения и превью -->
+								<div class="mb-3">
+									<label for="item_img" class="form-label"
+										>Изображение товара</label
+									>
+									<input type="file" class="form-control" id="item_img" accept="image/png,image/jpeg,image/webp" />
+									<div id="imagePreview" class="mt-3"></div>
+									<input
+										type="hidden"
+										id="hidden_img_input"
+										name="customImage"
+									/>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Закрыть
+							</button>
+							<button type="button" class="btn btn-primary" id="saveProductBtn">
+								Сохранить
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Модалка для добавления/редактирования категории -->
+			<div
+				class="modal fade"
+				id="categoryModal"
+				tabindex="-1"
+				aria-labelledby="categoryModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="categoryModalLabel">
+								Добавить/Редактировать категорию
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<form id="categoryForm">
+								<input type="hidden" id="categoryId" />
+								<div class="mb-3">
+									<label for="categoryName" class="form-label">Название</label>
+									<input
+										type="text"
+										class="form-control"
+										id="categoryName"
+										required
+									/>
+								</div>
+								<div class="mb-3">
+									<label for="categoryDescTitle" class="form-label"
+										>Заголовок описания категории</label
+									>
+									<input
+										type="text"
+										class="form-control"
+										id="categoryDescTitle"
+										required
+									/>
+								</div>
+
+								<div class="mb-3">
+									<label for="categoryDesc" class="form-label">Описание</label>
+									<textarea class="form-control" id="categoryDesc"></textarea>
+								</div>
+								<div class="mb-3">
+									<label for="categoryType" class="form-label">Тип</label>
+									<input
+										type="text"
+										class="form-control"
+										id="categoryType"
+										required
+									/>
+								</div>
+								<!-- Input для загрузки изображения и превью -->
+								<div class="mb-3">
+									<label for="category_img" class="form-label"
+										>Изображение категории</label
+									>
+									<input type="file" class="form-control" id="category_img" />
+									<div id="categoryImagePreview" class="mt-3"></div>
+									<input
+										type="hidden"
+										id="hidden_category_img_input"
+										name="category_img_base64"
+									/>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Закрыть
+							</button>
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="saveCategoryBtn"
+							>
+								Сохранить
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Модалка подтверждения удаления категории -->
+			<div
+				class="modal fade"
+				id="confirmCategoryDeleteModal"
+				tabindex="-1"
+				aria-labelledby="confirmCategoryDeleteModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="confirmCategoryDeleteModalLabel">
+								Подтвердить удаление категории
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							Вы уверены, что хотите удалить эту категорию?
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Отмена
+							</button>
+							<button
+								type="button"
+								class="btn btn-danger"
+								id="confirmCategoryDeleteBtn"
+							>
+								Удалить
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal для подтверждения удаления -->
+			<div
+				class="modal fade"
+				id="confirmDeleteModal"
+				tabindex="-1"
+				aria-labelledby="confirmDeleteLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="confirmDeleteLabel">
+								Подтвердить удаление
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							Вы уверены, что хотите удалить этот товар?
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Отмена
+							</button>
+							<button
+								type="button"
+								class="btn btn-danger"
+								id="confirmDeleteBtn"
+							>
+								Удалить
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/pages/admin/dashboard.js?v=20260614-best-sellers-avatar"></script>
+		<script src="/js/pages/admin/newsAdmin.js?v=20260708-news-date-only"></script>
+	</body>
+</html>
+
+
+
+
+

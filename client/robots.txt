@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin.html
+Disallow: /dashboard.html
+Disallow: /modal.html
+Disallow: /api/
+
+Allow: /
+
+Sitemap: https://pokubaka.ru/sitemap.xml

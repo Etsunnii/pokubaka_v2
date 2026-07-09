@@ -1,0 +1,253 @@
+@media (max-width: 800px) {
+	html,
+	body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+
+	.info {
+		margin-top: -2.8rem;
+		padding-top: 0;
+	}
+
+	.product-path > .container {
+		width: min(100%, calc(100% - 2.4rem));
+		max-width: none;
+		padding: 3.2rem 0 1rem;
+	}
+
+	.product-path__mark {
+		width: 3.6rem;
+		height: 3.6rem;
+		font-size: 1.55rem;
+	}
+
+	.product-path__name {
+		font-size: 2rem;
+	}
+
+	.product-path__breadcrumbs {
+		margin-top: 2.8rem;
+		gap: 1rem;
+		font-size: 1.45rem;
+	}
+
+	.product-path__breadcrumbs span:last-child {
+		max-width: 45vw;
+	}
+
+	.info > .container,
+	.guide > .container,
+	.questions > .container {
+		width: min(100%, calc(100% - 2.4rem));
+		max-width: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.info__content {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto;
+		padding-bottom: 4rem;
+		align-items: start;
+	}
+
+	.info__img,
+	.info__text,
+	.info__calc {
+		grid-column: 1 / -1 !important;
+		grid-row: auto !important;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	.info__img {
+		order: 1;
+		width: min(100%, 40rem);
+		height: auto;
+		max-height: none;
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: center;
+		border-radius: 2rem;
+		justify-self: center;
+	}
+
+	.info__text {
+		order: 2;
+		width: 100%;
+		justify-self: stretch;
+		text-align: left;
+	}
+
+	.info__title {
+		margin: 0 0 0.8rem;
+		font-size: 2.8rem;
+		line-height: 1.12;
+		overflow-wrap: anywhere;
+	}
+
+	.info__category {
+		font-size: 1.35rem;
+		line-height: 1;
+	}
+
+	.info__desc {
+		font-size: 1.6rem;
+		line-height: 1.45;
+		max-height: 14rem;
+	}
+
+	.info__spoiler {
+		font-size: 1.5rem;
+	}
+
+	.info__calc {
+		order: 3;
+		width: 100%;
+		padding: 2rem;
+		border-radius: 1.6rem;
+		justify-self: stretch;
+	}
+
+	.info__price {
+		font-size: 4.2rem;
+		line-height: 1;
+		margin: 0;
+	}
+
+	#selectContainer {
+		width: 100%;
+		margin-top: 1.6rem;
+		gap: 1.2rem;
+		flex-wrap: wrap;
+	}
+
+	#selectContainer .info__duration,
+	.info__calc--subscription #selectContainer .info__duration,
+	.info__duration {
+		width: 100%;
+		max-width: none;
+		min-width: 0;
+		height: 5.4rem;
+		padding-left: 1.8rem;
+		padding-right: 3.8rem;
+		font-size: 1.8rem;
+		border-radius: 1.4rem;
+	}
+
+	.info__calc--subscription #selectContainer {
+		margin-bottom: 1.6rem;
+	}
+
+	.info__btn-buy,
+	.info__btn-buymodal {
+		width: 100%;
+		min-width: 0;
+		height: 5.8rem;
+		margin-top: 1.6rem;
+		border-radius: 1.6rem;
+		font-size: 1.8rem;
+	}
+
+	.info__remark {
+		margin-top: 1.4rem;
+		font-size: 1.55rem;
+		line-height: 1.35;
+	}
+
+	.guide__content {
+		padding: 1.4rem 0 2rem;
+	}
+
+	.guide__elem {
+		font-size: 2.4rem;
+		line-height: 1.3;
+	}
+
+	.guide__elem::before {
+		font-size: 2.8rem;
+	}
+
+	.questions__content {
+		padding: 1.6rem 0 4rem;
+	}
+
+	.modal-dialog,
+	.modal-dialog.payment {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: min(calc(100% - 2rem), 72rem);
+		max-width: 72rem;
+		margin: 0;
+		transform: translate(-50%, -50%) !important;
+	}
+
+	.modal-content,
+	.modal-content.payment {
+		padding: 2.8rem 2rem;
+		border-radius: 2.2rem;
+	}
+
+	.modal__title {
+		font-size: 2.4rem;
+		line-height: 1.2;
+	}
+
+	.modal__desc {
+		font-size: 1.6rem;
+		line-height: 1.4;
+	}
+
+	.modal__body {
+		width: 100%;
+		max-width: none;
+	}
+
+	.modal__input {
+		width: 100%;
+		max-width: none;
+		min-height: 4.8rem;
+		margin-top: 2.4rem;
+		font-size: 1.6rem;
+		border-radius: 1.2rem;
+	}
+
+	.payment-email-error {
+		max-width: none;
+		font-size: 1.3rem;
+		line-height: 1.35;
+	}
+
+	.modal__btns {
+		width: 100%;
+		margin-top: 2.4rem;
+		flex-direction: row;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.modal__btns .btn_close,
+	.modal__btns .payform-tbank-btn {
+		width: min(22.5rem, calc((100vw - 6rem) / 2));
+		min-width: 0;
+		height: 7rem;
+		min-height: 7rem;
+		margin-top: 1.8rem;
+		border-radius: 2.5rem;
+		font-size: 2.5rem;
+	}
+
+	.info__btn-buy,
+	.info__btn-buymodal {
+		width: 100%;
+		min-height: 5.8rem;
+		font-size: 1.8rem;
+		border-radius: 1.6rem;
+	}
+}

@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Item {
+  id                  Int      @id @default(autoincrement())
+  name                String
+  desc                String
+  guide               String
+  price               Int
+  durations           String[] @default([])
+  img                 String
+  questions           String[]
+  pay_count           Int      @default(0)
+  accounts            String[]
+  used_accounts       String[] @default([])
+  sortOrder           Int      @default(0)
+  digisellerProductId String?
+  isVisible          Boolean  @default(true)
+  quantityEnabled    Boolean  @default(false)
+  quantityMin        Int      @default(1)
+  quantityMax        Int      @default(1)
+  quantityOptions    Int[]    @default([])
+
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  folder ProductFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  folderId Int?
+}
+
+model ProductFolder {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  sortOrder Int      @default(0)
+  items     Item[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String @unique
+  desc String 
+  descTitle String
+  type String
+  img String
+  minPrice Int @default(0)
+  sortOrder Int @default(0)
+  items Item[]
+  digisellerMappings DigisellerCategoryMapping[]
+}
+
+model Banner {
+  id Int @id @default(autoincrement())
+  img String 
+}
+
+model Order {
+  id              String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  productId      Int
+  type           String   // 'account' РёР»Рё 'subs'
+  duration       String?  // Р”Р»СЏ РїРѕРґРїРёСЃРєРё
+  price          Int
+  quantity       Int      @default(1)
+  status         String   // 'pending', 'paid', 'expired'
+  reservedAccount String?  // РђРєРєР°СѓРЅС‚, Р·Р°Р±СЂРѕРЅРёСЂРѕРІР°РЅРЅС‹Р№ Р·Р° Р·Р°РєР°Р·РѕРј (РµСЃР»Рё С‚РёРї - Р°РєРєР°СѓРЅС‚)
+  userId         String?
+}
+
+model Faq {
+  id        Int      @id @default(autoincrement())
+  question  String
+  answer    String
+  active    Boolean  @default(true)
+  sortOrder Int      @default(0)
+  section   FaqSection? @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FaqSection {
+  id        Int      @id @default(autoincrement())
+  title     String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  faq       Faq[]
+}
+
+model NewsCategory {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  slug      String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  news      News[]
+
+  @@map("news_categories")
+}
+
+model News {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  content     String
+  image       String
+  publishedAt DateTime     @default(now())
+  views       Int          @default(0)
+  likes       Int          @default(0)
+  active      Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  category    NewsCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  categoryId  Int
+
+  @@map("news")
+}
+
+
+model DigisellerCategoryMapping {
+  id                     Int      @id @default(autoincrement())
+  digisellerCategoryId   String   @unique
+  digisellerCategoryName String?
+  category               Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId             Int
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}

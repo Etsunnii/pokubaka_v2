@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Авторизация</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/16x16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/32x32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/64x64.png"
+			sizes="64x64"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/120x120.png"
+			sizes="120x120"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/icons/128x128.png"
+			sizes="128x128"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<style>
+			body {
+				background-color: #100e0f;
+				color: white;
+			}
+			.login-container {
+				margin-top: 100px;
+				background-color: #7e1b1e;
+				padding: 30px;
+				border-radius: 10px;
+			}
+			.error-message {
+				color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-4 login-container">
+					<h2 class="text-center">Авторизация</h2>
+					<form id="loginForm">
+						<div class="mb-3">
+							<label for="username" class="form-label">Логин</label>
+							<input type="text" class="form-control" id="username" required />
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-label">Пароль</label>
+							<input
+								type="password"
+								class="form-control"
+								id="password"
+								required
+							/>
+						</div>
+						<button type="submit" class="btn btn-light w-100">Войти</button>
+						<div class="error-message mt-3 text-center" id="errorMessage">
+							Неверный логин или пароль
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			document
+				.getElementById('loginForm')
+				.addEventListener('submit', async function (event) {
+					event.preventDefault()
+
+					const login = document.getElementById('username').value
+					const password = document.getElementById('password').value
+
+					try {
+						const response = await fetch('http://localhost:5000/api/admin', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({ login, password }),
+						})
+
+						const data = await response.json()
+
+						if (response.ok && data.token) {
+							document.cookie = `session_id=${data.token}; path=/`
+							window.location.href = 'dashboard.html'
+						} else {
+							document.getElementById('errorMessage').style.display = 'block'
+						}
+					} catch (error) {
+						console.error('Ошибка:', error)
+						document.getElementById('errorMessage').style.display = 'block'
+					}
+				})
+		</script>
+	</body>
+</html>
