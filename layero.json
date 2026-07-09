@@ -1,0 +1,13 @@
+{
+  "frontend": {
+    "root": "client",
+    "framework": "vite",
+    "build": "npm run build",
+    "output": "dist"
+  },
+  "backend": {
+    "root": "backend",
+    "runtime": "node_web"
+  },
+  "api_prefix": "/api"
+}
